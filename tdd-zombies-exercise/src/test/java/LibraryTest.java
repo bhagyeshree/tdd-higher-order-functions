@@ -22,7 +22,7 @@ public class LibraryTest {
 
 
     @Test
-    void showFoxesforNullCheckReturnNull() {
+    void checkingIfTheListIsNullReturnEmpty() {
 
         final List<String> words = Collections.singletonList(null);
 
@@ -34,7 +34,7 @@ public class LibraryTest {
     }
 
     @Test
-    void showFoxesforEmptyCheckReturnEmpty() {
+    void checkingIfTheListIsEmptyReturnEmpty() {
 
         final List<String> words = Arrays.asList();
 
@@ -47,7 +47,7 @@ public class LibraryTest {
 
 
     @Test
-    void checkForOneThatReturnsRedFox() {
+    void checkingForOneThatReturnsRedFox() {
         final List<String> words = Arrays.asList("Red Fox");
 
         Library library = new Library();
@@ -96,7 +96,9 @@ public class LibraryTest {
     @Test
     void adultforNullCheckReturnEmpty()
     {
-        final List<Person> persons = Collections.singletonList(null);
+       // final List<Person> persons = Collections.singletonList(null);
+
+      final   List<Person> persons = Arrays.asList();
 
         Library library = new Library();
 
@@ -106,17 +108,37 @@ public class LibraryTest {
     }
 
     @Test
-    void adultForOneWithAdult() {
-        Person person = new Person("abc", "xyz", 24);
-        final List<Person> persons = Arrays.asList();
+    void adultForOneReturnOneElement() {
+       // Person person = new Person("abc", "xyz", 24);
+        final List<Person> persons = Arrays.asList(new Person("abc", "xyz", 24));
 
         Library library = new Library();
 
         final List<Person> actual = library.adult(persons);
 
-        assertThat(actual.contains(person), is(true));
+       // assertThat(actual.contains(persons), is(true));
+
+        assertThat(actual, is(persons));
+
+
 
     }
+
+//    @Test
+//    void checkAdultsAgeGreaterThanOrEqualToEighteen(){
+//
+//        Library library = new Library();
+//
+//        //setup
+//        final List<Person> persons = Arrays.asList(new Person("Kenny","Johnson",12),new Person("John","Smith",32));
+//        final List<Person> expected = Arrays.asList(new Person("John","Smith",32));
+//        //exercise
+//        final List<Person> actual = library.adult(persons);
+//        //assert
+//        assertThat(actual.get(0).getFirstName(), is(expected.get(0).getFirstName()));
+//        assertThat(actual.get(0).getLastName(),is(expected.get(0).getLastName()));
+//        assertThat(actual.get(0).getAge(),is(expected.get(0).getAge()));
+//    }
 
 
 
